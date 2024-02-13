@@ -6,20 +6,21 @@ import { useParams } from 'react-router-dom';
 const ItemListContainer = ({ greeting }) => {
     const [productos, setProductos] = useState([]);
 
-    const {idCat} = useParams()
+    const {categoryId} = useParams()
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("./productos.json");
+                const response = await fetch("/productos.json");
                 const data = await response.json()
 
-                if(idCat){
-                    const filtroCat = data.filter((p) => p.categoria == idCat)
-                    setProductos(filtroCat)
+                if(categoryId){
+                    const filteredProducts = data.filter((p) => p.categoria == categoryId)
+                    setProductos(filteredProducts)
                 }else{
                     setProductos(data)
                 }
+
             } catch (error) {
                 console.log("Error en fetch" + error)
             }
@@ -27,7 +28,7 @@ const ItemListContainer = ({ greeting }) => {
 
         fetchData()
 
-    }, [])
+    }, [categoryId])
 
     return (
         <div className='itemListContainer'>
