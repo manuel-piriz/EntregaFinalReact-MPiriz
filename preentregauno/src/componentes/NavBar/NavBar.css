@@ -24,3 +24,7 @@ a{
     font-weight: bold;
     font-size: 20px;
 }
+
+.active{
+    color:white
+}

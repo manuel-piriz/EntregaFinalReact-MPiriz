@@ -1,10 +1,12 @@
-p{
-font-size: 25px;
+img{
+    height: 200px;
+    width: 200px;
 }
 
-.itemListContainer{
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 90px;
 }
