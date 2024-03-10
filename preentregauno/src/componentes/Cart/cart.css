@@ -30,12 +30,20 @@ h2{
     list-style: none;
     padding: 0;
     height: auto;
+    width: auto;
 }
 
 .productosCarrito li {
     border-bottom: 1px solid #ccc;
     padding: 10px;
     height: auto;
+}
+
+.cartItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .productosCarrito p {
@@ -59,4 +67,12 @@ h2{
 .productosCarrito .total {
     margin-top: 20px;
     font-weight: bold;
+}
+
+.cartTotal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
 }

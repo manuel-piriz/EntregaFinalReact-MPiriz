@@ -32,17 +32,24 @@ const Cart = () => {
                     <h2>Productos en el carrito:</h2>
                     <ul>
                         {cart.map((item) => (
-                            <li key={item.id}>
-                                <p>{item.nombre}</p>
-                                <p>Cantidad: {item.cantidad}</p>
-                                <p>Precio: {item.precio}</p>
-                                <button onClick={() => handleEliminarItem(item.id)}>Eliminar</button>
+                            <li key={item.id} className='cartItem'>
+                                <div>
+                                    <img src={`${item.img}`} alt={item.nombre} />
+                                </div>
+                                <div>
+                                    <p>{item.nombre}</p>
+                                    <p>Cantidad: {item.cantidad}</p>
+                                    <p>Precio: {item.precio}</p>
+                                    <button onClick={() => handleEliminarItem(item.id)}>Eliminar</button>
+                                </div>
                             </li>
                         ))}
                     </ul>
-                    <p>Total Cantidad: {totalQuantity}</p>
-                    <p>Total Precio: {total}</p>
-                    <button onClick={handleVaciarCarrito}>Vaciar Carrito</button>
+                    <div className='cartTotal'>
+                        <p>Total Cantidad: {totalQuantity}</p>
+                        <p>Total Precio: {total}</p>
+                        <button onClick={handleVaciarCarrito}>Vaciar Carrito</button>
+                    </div>
                 </>
             )}
         </div>
