@@ -2,11 +2,20 @@ import React from 'react'
 import './navBar.css'
 import CartWidget from '../CartWidget/CartWidget'
 import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
     return (
         <>
-            <h1 className='Header'>Todo Oficina</h1>
+            <div className='logo-container'>
+                <Link to={'/'}>
+                    <img src='./assets/img/logo.png' alt='Logo' className='logo' />
+                </Link>
+                <Link to={'/'}>
+                    <h1>Todo Oficina</h1>
+                </Link>
+
+            </div>
 
             <ul className='navBarLinks'>
                 <li>

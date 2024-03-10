@@ -6,11 +6,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Error from './componentes/Error/Error'
 import Cart from './componentes/Cart/Cart'
 import CartProvider from './Context/CartContext'
+import Footer from './componentes/Footer/Footer'
 
 function App() {
 
   return (
-    <>
+    <div className='wholeApp'>
       <BrowserRouter>
         <CartProvider>
           <NavBar />
@@ -25,9 +26,10 @@ function App() {
 
             <Route path='*' element={<Error />} />
           </Routes>
+          <Footer/>
         </CartProvider>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

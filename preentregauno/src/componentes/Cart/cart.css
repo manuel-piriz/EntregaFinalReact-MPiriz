@@ -14,7 +14,6 @@ h2{
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    height: auto;
 }
 
 .productosCarrito h2 {
@@ -29,19 +28,16 @@ h2{
     text-align: center;
     list-style: none;
     padding: 0;
-    height: auto;
-    width: auto;
 }
 
 .productosCarrito li {
     border-bottom: 1px solid #ccc;
     padding: 10px;
-    height: auto;
 }
 
-.cartItem{
+.cartItem {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     width: 100%;
 }
