@@ -6,9 +6,9 @@ import { NavLink } from 'react-router-dom'
 const NavBar = () => {
     return (
         <>
-            <h1>Todo Oficina</h1>
+            <h1 className='Header'>Todo Oficina</h1>
 
-            <ul>
+            <ul className='navBarLinks'>
                 <li>
                     <NavLink to={'/'}>Home</NavLink>
                 </li>

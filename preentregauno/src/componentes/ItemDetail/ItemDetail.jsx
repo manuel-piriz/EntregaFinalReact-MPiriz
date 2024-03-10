@@ -1,8 +1,23 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../Context/CartContext';
 import './itemDetail.css'
 
+
 const ItemDetail = ({ producto }) => {
+
+    const [cart, setCart] = useState(false)
+
+    const {agregarCarrito} = useContext(CartContext)
+
+    const onAdd = (count) =>{
+
+        setCart(true)
+
+        agregarCarrito(producto,count)
+    }
+
     return (
             <div key={producto.id} className='detalle'>
                 <img src={producto.img} alt={producto.nombre} />
@@ -11,7 +26,7 @@ const ItemDetail = ({ producto }) => {
                 <h2>Stock: {producto.stock}</h2>
                 <p>{producto.descripcion}</p>
 
-                <ItemCount initial= {1} stock={producto.stock}/>
+                {cart ? <Link to={'/cart'}>Ir al carrito</Link> : <ItemCount initial= {1} stock={producto.stock} onAdd={onAdd}/>}
             </div>
     )
 }

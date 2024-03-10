@@ -15,7 +15,7 @@ const ItemListContainer = ({ greeting }) => {
                 const data = await response.json()
 
                 if(categoryId){
-                    const filteredProducts = data.filter((p) => p.categoria == categoryId)
+                    const filteredProducts = data.filter((p) => p.categoria === categoryId)
                     setProductos(filteredProducts)
                 }else{
                     setProductos(data)
@@ -34,7 +34,7 @@ const ItemListContainer = ({ greeting }) => {
         <div className='itemListContainer'>
             <p>{greeting}</p>
 
-            {productos.length == 0
+            {productos.length === 0
                 ?
                 <h2>cargando productos...</h2>
                 :
