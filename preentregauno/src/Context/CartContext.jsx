@@ -10,9 +10,12 @@ const CartProvider = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(0);
 
     useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-        cantidadCarrito();
-        totalCarrito();
+        try {
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartInfo();
+        } catch (error) {
+            console.log(error);
+        }
     }, [cart]);
 
     const agregarCarrito = (producto, cantidad) => {

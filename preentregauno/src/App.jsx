@@ -7,6 +7,7 @@ import Error from './componentes/Error/Error'
 import Cart from './componentes/Cart/Cart'
 import CartProvider from './Context/CartContext'
 import Footer from './componentes/Footer/Footer'
+import Checkout from './componentes/Checkout/Checkout'
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
             <Route path='/detalle/:id' element={<ItemDetailContainer />} />
 
             <Route path='/cart' element={<Cart />} />
+
+            <Route path='/checkout' element={<Checkout />} />
 
             <Route path='*' element={<Error />} />
           </Routes>

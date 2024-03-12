@@ -19,7 +19,7 @@
     },
     {
         "id": 3,
-        "nombre": "Lampara portátil",
+        "nombre": "Lámpara portátil",
         "img": "/assets/img/lampara.jpg",
         "precio": 25,
         "stock": 6,

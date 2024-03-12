@@ -7,16 +7,15 @@ const Cart = () => {
     const { cart, eliminarItem, vaciarCarrito, cantidadCarrito, totalCarrito, total, totalQuantity } = useContext(CartContext);
 
     useEffect(() => {
-        // Llama a las funciones de contexto cuando el componente se monta
         cantidadCarrito();
         totalCarrito();
     }, [cart, cantidadCarrito, totalCarrito]);
 
-    const handleEliminarItem = (itemId) => {
+    const EliminarItem = (itemId) => {
         eliminarItem(itemId);
     };
 
-    const handleVaciarCarrito = () => {
+    const VaciarCarrito = () => {
         vaciarCarrito();
     };
 
@@ -40,7 +39,7 @@ const Cart = () => {
                                     <p>{item.nombre}</p>
                                     <p>Cantidad: {item.cantidad}</p>
                                     <p>Precio: {item.precio}</p>
-                                    <button onClick={() => handleEliminarItem(item.id)}>Eliminar</button>
+                                    <button onClick={() => EliminarItem(item.id)}>Eliminar</button>
                                 </div>
                             </li>
                         ))}
@@ -48,7 +47,8 @@ const Cart = () => {
                     <div className='cartTotal'>
                         <p>Total Cantidad: {totalQuantity}</p>
                         <p>Total Precio: {total}</p>
-                        <button onClick={handleVaciarCarrito}>Vaciar Carrito</button>
+                        <button onClick={VaciarCarrito}>Vaciar Carrito</button>
+                        <Link to='/checkout'className='checkout'>Completar Compra</Link>                            
                     </div>
                 </>
             )}

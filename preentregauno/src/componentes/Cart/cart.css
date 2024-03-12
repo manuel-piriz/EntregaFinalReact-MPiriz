@@ -56,10 +56,6 @@ h2{
     font-size: 15px;
 }
 
-.productosCarrito button:hover {
-    background-color: #c0392b;
-}
-
 .productosCarrito .total {
     margin-top: 20px;
     font-weight: bold;
@@ -71,4 +67,27 @@ h2{
     align-items: center;
     flex-direction: column;
     padding: 15px;
+}
+
+.homebtn{
+    background-color: rgb(38, 25, 153);
+    color: #fff;
+    border: none;
+    padding: 15px 10px;
+    margin-top: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    width: 50%;
+    margin: 0 auto;
+    
+}
+
+.checkout{
+    background-color: rgb(11, 206, 4);
+    color: #fff;
+    border: none;
+    padding: 15px 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 15px;
 }
