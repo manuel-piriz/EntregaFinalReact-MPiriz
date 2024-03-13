@@ -4,14 +4,25 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin-top: 55px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .detailbtn {
-    background-color: rgb(38, 25, 153);
+    background-color: rgb(198, 76, 23);
     color: #fff;
     border: none;
     margin-top: 10px;
     padding: 10px;
     cursor: pointer;
     font-size: 15px;
+    text-decoration: none;
+}
+
+.detailbtn:hover {
+    background-color: rgb(236, 116, 41);
 }

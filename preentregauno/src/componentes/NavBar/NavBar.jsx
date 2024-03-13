@@ -1,12 +1,12 @@
-import React from 'react'
-import './navBar.css'
-import CartWidget from '../CartWidget/CartWidget'
-import { NavLink } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import './navBar.css';
+import CartWidget from '../CartWidget/CartWidget';
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
-        <>
+        <div className='navContainer'>
             <div className='logo-container'>
                 <Link to={'/'}>
                     <img src='./assets/img/logo.png' alt='Logo' className='logo' />
@@ -14,7 +14,6 @@ const NavBar = () => {
                 <Link to={'/'}>
                     <h1>Todo Oficina</h1>
                 </Link>
-
             </div>
 
             <ul className='navBarLinks'>
@@ -36,8 +35,8 @@ const NavBar = () => {
             </ul>
 
             <CartWidget />
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default NavBar
+export default NavBar;
