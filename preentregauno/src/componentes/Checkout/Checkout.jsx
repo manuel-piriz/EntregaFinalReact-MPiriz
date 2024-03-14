@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../../Context/CartContext';
 import './checkout.css';
-import { doc, getDoc,addDoc, collection, getFirestore, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, addDoc, collection, getFirestore, updateDoc } from 'firebase/firestore';
 
 const Checkout = () => {
     const { cart, totalCarrito, cantidadCarrito, vaciarCarrito } = useContext(CartContext);
@@ -15,33 +15,13 @@ const Checkout = () => {
     const [ordenId, setOrdenId] = useState('');
 
     const handleForm = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
-        if (!nombre) {
-            setError('Ingresa tu nombre.');
+        if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
+            setError('Por favor, completa todos los campos.');
             return;
         }
-    
-        if (!apellido) {
-            setError('Ingresa tu apellido.');
-            return;
-        }
-    
-        if (!telefono) {
-            setError('Ingresa tu número de teléfono.');
-            return;
-        }
-    
-        if (!email) {
-            setError('Ingresa tu dirección de correo electrónico.');
-            return;
-        }
-    
-        if (!emailConfirmacion) {
-            setError('Confirma tu dirección de correo electrónico.');
-            return;
-        }
-    
+
         if (email !== emailConfirmacion) {
             setError('Las direcciones de correo electrónico no coinciden.');
             return;
@@ -61,56 +41,46 @@ const Checkout = () => {
             apellido,
             telefono,
             email
-        }
+        };
 
-        console.log('IDs de productos en orden.items:', orden.items.map(item => item.id));
-        
         Promise.all(
             orden.items.map(async (productoOrden) => {
-                const productoRef = doc(db, 'item', productoOrden.id);
+                const productoRef = doc(db, 'productos', productoOrden.id);
                 const productoDoc = await getDoc(productoRef);
-    
+
                 if (productoDoc.exists()) {
                     const stockActual = productoDoc.data().stock;
-                    console.log(`Stock actual del producto ${productoOrden.id}: ${stockActual}`);
-    
+
                     await updateDoc(productoRef, {
                         stock: stockActual - productoOrden.cantidad
                     });
-                    console.log(`Nuevo stock del producto ${productoOrden.id}: ${stockActual - productoOrden.cantidad}`);
                 } else {
-                    console.log(error);
+                    setError('Algo salió mal al procesar la orden. Por favor, inténtalo de nuevo.');
                 }
             })
         )
-
         .then(() => {
-            addDoc(collection(db,'ordenes'),orden)
+            addDoc(collection(db,'ordenes'), orden)
             .then((docRef) => {
-                setError('')
-                setOrdenId(docRef.id)
-                vaciarCarrito()
+                setError('');
+                setOrdenId(docRef.id);
+                vaciarCarrito();
             })
             .catch((error) => {
-                console.log(error)
-                setError('Se produjo un error al crear la orden')
-            })
+                console.error(error);
+                setError('Se produjo un error al crear la orden.');
+            });
         })
         .catch((error) => {
-            console.log(error)
-            setError('No es posible actualizar el stock')
-        })
-
+            console.error(error);
+            setError('Se produjo un error al actualizar el stock.');
+        });
     };
 
     return (
-
         <div className="checkoutContainer">
-
             <div className="checkoutForm">
-                
                 <h2>Ingresa tus datos</h2>
-
                 <form onSubmit={handleForm}>
                     <div className='formField'>
                         <label htmlFor="Nombre">Nombre</label>
@@ -135,22 +105,18 @@ const Checkout = () => {
 
                     <button className='checkout' type='submit'>Completar compra</button>
 
-                    {error && <p style={{color:'red'}}>{error}</p>}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                     {ordenId && (
                         <b>
-                            Gracias por elegirnos! Tu número de orden es: {ordenId}
+                            Gracias por elegirnos, tu número de orden es: {ordenId}
                         </b>
                     )}
                 </form>
             </div>
-
             <div className="productList">
-
                 <h2>Resumen de la compra</h2>
                 {cart.map((item) => (
-
                     <div key={item.id}>
-                        {""}
                         <p>
                             {item.nombre} x {item.cantidad}
                         </p>
