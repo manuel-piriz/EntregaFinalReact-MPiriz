@@ -1,8 +1,8 @@
-# React + Vite
+Este es un proyecto de React desarrollado por Manuel Piriz como entrega final para el curso de React JS impartido en Coderhouse.
+Utiliza Firebase como backend para almacenar datos. Proporciona una plataforma simple para la gestión de productos y carritos de compra.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Instalación
+Clona este repositorio en tu máquina local.
+Ejecuta npm install para instalar todas las dependencias del proyecto.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Una vez que hayas instalado las dependencias y configurado las variables de entorno, puedes iniciar el servidor de desarrollo ejecutando npm run dev. Esto te proporciona un link que puedes abrir haciendo (Ctrl + click), el cual iniciará la aplicación en tu navegador predeterminado.
