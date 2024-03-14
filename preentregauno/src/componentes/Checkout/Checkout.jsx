@@ -77,8 +77,7 @@ const Checkout = () => {
                         stock: stockActual - productoOrden.cantidad
                     });
                 } else {
-                    console.error('El documento del producto no existe');
-                    console.log('ID del producto que no existe:', productoOrden.id);
+                    console.log(error);
                 }
             })
         )

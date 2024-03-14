@@ -50,7 +50,8 @@ const CartProvider = ({ children }) => {
 
     const totalCarrito = () => {
         const totalPrice = cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
-        setTotal(totalPrice);
+        console.log("Total del carrito:", totalPrice);
+        return totalPrice;
     };
 
     return (
