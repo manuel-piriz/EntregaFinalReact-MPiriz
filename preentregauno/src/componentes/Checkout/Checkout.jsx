@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../../Context/CartContext';
 import './checkout.css';
-import { doc, getDoc, addDoc, collection, getFirestore, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, addDoc, collection, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 
 const Checkout = () => {
-    const { cart, totalCarrito, cantidadCarrito, vaciarCarrito } = useContext(CartContext);
+    const { cart, totalCarrito, vaciarCarrito } = useContext(CartContext);
 
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
@@ -26,8 +27,6 @@ const Checkout = () => {
             setError('Las direcciones de correo electrónico no coinciden.');
             return;
         }
-
-        const db = getFirestore();
 
         const orden = {
             items: cart.map((item) => ({
