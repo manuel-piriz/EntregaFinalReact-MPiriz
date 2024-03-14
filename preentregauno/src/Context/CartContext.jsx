@@ -9,13 +9,16 @@ const CartProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
 
+    const updateCartInfo = () => {
+        const totalPrice = cart.reduce((total, item) => total + item.precio * item.cantidad, 0);
+        const totalQuantity = cart.reduce((total, item) => total + item.cantidad, 0);
+        
+        setTotal(totalPrice);
+        setTotalQuantity(totalQuantity);
+    };
+
     useEffect(() => {
-        try {
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartInfo();
-        } catch (error) {
-            console.log(error);
-        }
+        updateCartInfo();
     }, [cart]);
 
     const agregarCarrito = (producto, cantidad) => {
