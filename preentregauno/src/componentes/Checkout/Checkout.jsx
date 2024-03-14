@@ -72,10 +72,12 @@ const Checkout = () => {
     
                 if (productoDoc.exists()) {
                     const stockActual = productoDoc.data().stock;
+                    console.log(`Stock actual del producto ${productoOrden.id}: ${stockActual}`);
     
                     await updateDoc(productoRef, {
                         stock: stockActual - productoOrden.cantidad
                     });
+                    console.log(`Nuevo stock del producto ${productoOrden.id}: ${stockActual - productoOrden.cantidad}`);
                 } else {
                     console.log(error);
                 }
